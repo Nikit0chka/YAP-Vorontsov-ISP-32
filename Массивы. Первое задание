@@ -1,0 +1,16 @@
+using System;
+
+namespace Массивы_первое
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Vvedite text : ");
+            string vvod = Console.ReadLine();
+
+            for (int i = 0; i != vvod.Length; i++)
+                Console.WriteLine($"{vvod[i]}");
+        }
+    }
+}
