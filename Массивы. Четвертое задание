@@ -1,0 +1,25 @@
+using System;
+
+namespace Массивы_четвертое
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] vvod = Console.ReadLine().Split(',');
+            bool armiya = false, stipendia = false, ghizn = false;
+
+            for (int i = 0; i != vvod.Length; i++)
+            {
+                if (vvod[i] == "2") { armiya = true; }
+                if (vvod[i] == "3") { stipendia = true; }
+                if (vvod[i] == "4") { ghizn = true; }
+            }
+
+            if (armiya == true) { Console.WriteLine("Nu chto, student, pora dolg Rodine otdat"); }
+            else if (stipendia == true) { Console.WriteLine("Proshai stipendiya!"); }
+            else if (ghizn == true) { Console.WriteLine("Ghivi poka, cherez pol goda uvidimsya"); }
+            else { Console.WriteLine("O, otlichnik poyavilsya! Na olipmpiadu poidesh"); }
+        }
+    }
+}
