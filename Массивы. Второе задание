@@ -1,0 +1,24 @@
+using System;
+
+namespace Массивы_второе
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Vvedite dva chisla : ");
+
+            string vvod1 = (Console.ReadLine());
+            string vvod2 = (Console.ReadLine());
+            int schetchik = 0;
+
+            for (int i = 0; i != vvod1.Length; i++)
+            {
+                if (vvod1[i] == vvod2[i])
+                    schetchik++;
+            }
+
+            Console.WriteLine($"Sovpadenie {schetchik} elementov");
+        }
+    }
+}
