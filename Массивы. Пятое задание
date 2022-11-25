@@ -1,0 +1,17 @@
+using System;
+
+namespace Методы_пятое
+{
+    class Program
+    {
+        public static void GetDecryption(string Ňįřřģĵį)
+        {
+
+        }
+
+        public static void Main()
+        {
+
+        }
+    }
+}
