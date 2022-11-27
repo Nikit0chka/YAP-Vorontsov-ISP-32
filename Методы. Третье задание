@@ -1,14 +1,14 @@
 using System;
 
-namespace Методы_третье
+namespace Методы_второе
 {
     class Program
     {
         public static double[] GetCubes(int nachalnoe_znachenie, int konechnoe_znachenie)
         {
-            double[] massiv = new double[konechnoe_znachenie];
+            double[] massiv = new double[konechnoe_znachenie - nachalnoe_znachenie + 1];
 
-            for (int i = 0; i != konechnoe_znachenie; i++, nachalnoe_znachenie++)
+            for (int i = 0; i != massiv.Length; i++, nachalnoe_znachenie++)
             {
                 massiv[i] = Math.Pow(nachalnoe_znachenie, 3);
             }
