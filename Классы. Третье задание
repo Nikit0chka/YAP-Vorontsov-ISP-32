@@ -1,0 +1,101 @@
+using System;
+
+namespace Классы_пятые
+{
+    public class tochki
+    {
+        public void vvod_muha(int vvod_x, int vvod_y, int vvod_z)
+        {
+            if (vvod_y != 0)
+            {
+                Console.WriteLine("Oshibka! Muha nahoditsya ne na polu, y = 0");
+                return;
+            }
+            x = vvod_x;
+            y = vvod_y;
+            z = vvod_z;
+        }
+
+        public void vvod_pauk(int vvod_x, int vvod_y, int vvod_z)
+        {
+            if (vvod_y < 0)
+            {
+                Console.WriteLine("Oshibka! Pauk nahoditsya vne komanti, y >= 0");
+                return;
+            }
+            x = vvod_x;
+            y = vvod_y;
+            z = vvod_z;
+        }
+
+        static public double Rasstoyanie(tochki vvod_classa1, tochki vvod_classa2)
+        {
+            double rasstoyanie;
+
+            rasstoyanie = Math.Sqrt(Math.Pow(vvod_classa1.x - vvod_classa2.x, 2) + Math.Pow(vvod_classa1.y - vvod_classa2.y, 2) + Math.Pow(vvod_classa1.z - vvod_classa2.z, 2));
+            rasstoyanie = Math.Round(rasstoyanie, 5);
+
+            Console.WriteLine($"Rasstoyanie meghdu muhoi i paukom = {rasstoyanie}");
+
+            return rasstoyanie;
+        }
+
+        static public double VertikalniiSpusk(tochki vvod_classa1, tochki vvod_classa2)
+        {
+            double rasstoyanie;
+
+            if ((vvod_classa1.x != vvod_classa2.x) || (vvod_classa1.z != vvod_classa2.z))
+            {
+                Console.WriteLine("Pauk ne nahoditsya nad muhoi, vertikalnii spusk nevozmoghen!");
+                return 0;
+            }
+            rasstoyanie = Math.Sqrt(Math.Pow(vvod_classa1.y - vvod_classa2.y, 2));
+            rasstoyanie = Math.Round(rasstoyanie, 5);
+
+            Console.WriteLine($"Put' kotorii neobhodimo proiti paku do muhi vertikalno = {rasstoyanie}");
+
+            return rasstoyanie;
+        }
+
+        private int x;
+        private int y;
+        private int z;
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int vvod_x, vvod_y = 1, vvod_z;
+            tochki muha = new tochki();
+            tochki pauk = new tochki();
+
+            Console.WriteLine("Vvedite koordinati muhi, kotoraya nahoditsya na polu : ");
+
+            while (vvod_y != 0)
+            {
+                Console.Write("x = "); vvod_x = Int32.Parse(Console.ReadLine());
+                Console.Write("y = "); vvod_y = Int32.Parse(Console.ReadLine());
+                Console.Write("z = "); vvod_z = Int32.Parse(Console.ReadLine());
+
+                muha.vvod_muha(vvod_x, vvod_y, vvod_z);
+            }
+
+            Console.WriteLine("Vvedite koordinati pauka : ");
+
+            vvod_y = -1;
+
+            while (vvod_y < 0)
+            {
+                Console.Write("x = "); vvod_x = Int32.Parse(Console.ReadLine());
+                Console.Write("y = "); vvod_y = Int32.Parse(Console.ReadLine());
+                Console.Write("z = "); vvod_z = Int32.Parse(Console.ReadLine());
+
+                pauk.vvod_pauk(vvod_x, vvod_y, vvod_z);
+            }
+
+            tochki.Rasstoyanie(pauk, muha);
+            tochki.VertikalniiSpusk(pauk, muha);
+        }
+    }
+}
