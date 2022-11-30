@@ -1,0 +1,53 @@
+using System;
+
+
+namespace Классы_второе
+{
+    public class MyString
+    {
+        public string Reverse(string vvod_stroka)
+        {
+            string novaya_stroka = "";
+
+            for (int i = vvod_stroka.Length - 1; i != -1; i--)
+                novaya_stroka += vvod_stroka[i];
+
+            return novaya_stroka;
+        }
+
+        public string UcFirst(string vvod_stroka)
+        {
+            return char.ToUpper(vvod_stroka[0]) + vvod_stroka.Substring(1);
+        }
+
+        public string UcWords(string vvod_stroka)
+        {
+            string novaya_stroka = "";
+
+            for (int i = 0; i != vvod_stroka.Length; i++)
+            {
+                if ((i == 0) || (vvod_stroka[i - 1] == ' '))
+                {
+                    novaya_stroka += char.ToUpper(vvod_stroka[i]);
+                    continue;
+                }
+                novaya_stroka += vvod_stroka[i];
+            }
+            return novaya_stroka;
+        }
+
+        public string stroka;
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            MyString any_object = new MyString();
+
+            any_object.stroka = "asdf,adf asdf asdf asdf as d";
+            any_object.Reverse(any_object.stroka);
+            any_object.UcFirst(any_object.stroka);
+            any_object.UcWords(any_object.stroka);
+        }
+    }
+}
