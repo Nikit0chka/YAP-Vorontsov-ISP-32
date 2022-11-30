@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 
 
-namespace Коллекции_второе
+namespace Коллекции_третье
 {
     class Program
     {
