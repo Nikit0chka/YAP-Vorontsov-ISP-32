@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+
+
+namespace Коллекции_пятое
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<char> list1 = new List<char>();
+            List<char> list2 = new List<char>();
+
+            int index_zapyatoi;
+            string stroka = Console.ReadLine();
+
+            for (int i = 0; i != stroka.Length; i++)
+                list1.Add(Convert.ToChar(stroka[i]));
+
+            index_zapyatoi = list1.IndexOf(',');
+
+            for (int i = 0; i != list1.Count; i++)
+            {
+                if (i == index_zapyatoi)
+                {
+                    list2.Add(list1[i + 1]);
+                    i += 2;
+                    for (int j = i; list1[j] != ' '; j++, i++)
+                        list2.Add(list1[j]);
+                    list2.Add(',');
+                }
+                list2.Add(list1[i]);
+            }
+
+            for (int i = 0; i != list2.Count; i++)
+                Console.Write($"{list2[i]}");
+        }
+    }
+}
