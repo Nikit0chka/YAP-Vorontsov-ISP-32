@@ -1,0 +1,124 @@
+using System;
+
+namespace Конструкторы_четвертое
+{
+    public class Dengi
+    {
+        public Dengi() { }
+        public Dengi(string vvod_naminala, string vvod_valuti)
+        {
+            int naminal = Convert.ToInt32(vvod_naminala);
+
+            if (naminal < 0)
+                Console.WriteLine("Ne moghet bit otricatelnim!");
+            else
+            {
+                if (vvod_valuti == "р.")
+                    rubli = naminal;
+                else
+                {
+                    rubli = naminal / 100;
+                    moneti = naminal % 100;
+                }
+            }
+        }
+
+        public Dengi(string vvod_naminala1, string vvod_valuti1, string vvod_naminala2, string vvod_valuti2)
+        {
+            int naminal1 = Convert.ToInt32(vvod_naminala1);
+            int naminal2 = Convert.ToInt32(vvod_naminala2);
+
+            if ((naminal1 < 0) || (naminal2 < 0))
+                Console.WriteLine("Ne moghet bit otricatelnim!");
+            else if ((vvod_valuti1 == "коп.") || (vvod_valuti2 == "р."))
+                Console.WriteLine("Rubli i kopeiki pereputani mestami!");
+            else
+            {
+                if (naminal2 >= 100)
+                {
+                    rubli = naminal1 + naminal2 / 100;
+                    moneti = naminal2 % 100;
+                }
+                else
+                {
+                    rubli = naminal1;
+                    moneti = naminal2;
+                }
+            }
+        }
+
+        public static Dengi Sum(Dengi vvod1, Dengi vvod2)
+        {
+            Dengi novii_obekt = new Dengi();
+
+            if ((vvod2.moneti + vvod1.moneti) >= 100)
+            {
+                novii_obekt.moneti = (vvod1.moneti + vvod2.moneti) / 100;
+                novii_obekt.rubli = vvod1.rubli + vvod2.rubli + (vvod1.moneti + vvod2.moneti) % 100;
+            }
+            else
+            {
+                novii_obekt.moneti = (vvod1.moneti + vvod2.moneti);
+                novii_obekt.rubli = vvod1.rubli + vvod2.rubli;
+            }
+
+            return novii_obekt;
+        }
+
+        public static Dengi Difference(Dengi vvod1, Dengi vvod2)
+        {
+            Dengi novii_obekt = new Dengi();
+
+            novii_obekt.moneti = Math.Abs(vvod1.moneti - vvod2.moneti);
+            novii_obekt.rubli = Math.Abs(vvod1.rubli - vvod2.rubli);
+
+            if (novii_obekt.moneti >= 100)
+            {
+                novii_obekt.rubli += novii_obekt.moneti / 100;
+                novii_obekt.moneti = novii_obekt.moneti % 100;
+            }
+
+            return novii_obekt;
+        }
+        public static void Print(Dengi vvod1)
+        {
+            if (vvod1.rubli == 0)
+                Console.WriteLine($"Monet : {vvod1.moneti}");
+            else
+                Console.WriteLine($"Rubley : {vvod1.rubli} Monet : {vvod1.moneti}");
+        }
+        public void PrintTransferCost(double vvod)
+        {
+            int novii_rubli = rubli;
+            int novii_moneti = moneti;
+            int komissiya = Convert.ToInt32(Math.Round((rubli * 100 + moneti) * (vvod / 100)));
+
+            if ((komissiya + novii_moneti) >= 100)
+            {
+                novii_rubli += (novii_moneti + komissiya) / 100;
+                novii_moneti = (novii_moneti + komissiya) % 100;
+                Console.WriteLine($"Rubli = {novii_rubli} Moneti = {novii_moneti} ");
+            }
+            else
+            {
+                novii_moneti += komissiya;
+                Console.WriteLine($"Rubli = {novii_rubli} Moneti = {novii_moneti} ");
+            }
+
+        }
+        public int rubli;
+        public int moneti;
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dengi denga1 = new Dengi("10", "р.", "50", "коп.");
+            Dengi denga2 = new Dengi("100", "р.", "150", "коп.");
+            Dengi.Sum(denga1, denga2);
+            Dengi.Difference(denga1, denga2);
+            Dengi.Print(Dengi.Difference(denga1, denga2));
+            denga1.PrintTransferCost(5);
+        }
+    }
+}
