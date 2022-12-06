@@ -4,49 +4,40 @@ namespace Методы_десятое
 {
     class Program
     {
-        public static void ArraySum(int[] massiv1, int[] massiv2)
+        public static int[] ArraySum(int[] massiv1, int[] massiv2)
         {
+            int[] sum_massiv = new int[0];
             int dlina1 = massiv1.Length;
             int dlina2 = massiv2.Length;
-            int[] sum_massiv = new int[massiv1.Length + massiv2.Length];
+           
 
             if (dlina1 > dlina2)
-            {
+            { 
+                sum_massiv = new int[dlina1];
+
                 for (int i = 0; i != dlina1; i++)
-                {
                     sum_massiv[i] = massiv1[i];
-                }
+
                 for (int i = 0; i != dlina2; i++)
-                {
                     sum_massiv[i] = massiv1[i] + massiv2[i];
-                }
-                for (int i = 0; i != dlina1; i++)
-                {
-                    Console.Write($"{sum_massiv[i]} ");
-                }
             }
             else
             {
+                sum_massiv = new int[dlina2];
+
                 for (int i = 0; i != dlina2; i++)
-                {
                     sum_massiv[i] = massiv2[i];
-                }
+
                 for (int i = 0; i != dlina1; i++)
-                {
-                    sum_massiv[i] = massiv1[i] + massiv2[i];
-                }
-                for (int i = 0; i != dlina2; i++)
-                {
-                    Console.Write($"{sum_massiv[i]} ");
-                }
+                    sum_massiv[i] = massiv1[i] + massiv2[i];                
             }
+            return sum_massiv;
         }
         static void Main(string[] args)
         {
             int[] massiv1 = { 1, 2, 3, 4, 5, 6, 6 };
-            int[] massiv2 = { 1, 2, 3, 4, 5, 6, 6, 7};
-
-            ArraySum(massiv1, massiv2);
+            int[] massiv2 = { 1, 2, 3, 4, 5, 6, 6, 7, 8};
+            int[] massiv3 = ArraySum(massiv2, massiv1);
         }
     }
 }
