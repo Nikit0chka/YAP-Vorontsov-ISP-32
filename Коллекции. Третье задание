@@ -13,7 +13,7 @@ namespace Коллекции_третье
 
             for (int i = 0; i != n; i++)
             {
-                int randomaizer = rnd.Next(0, 8);
+                int randomaizer = rnd.Next(1, 8);
 
                 if (randomaizer == 1)
                     list1.Add(Convert.ToBoolean(rnd.Next(0, 1)));
